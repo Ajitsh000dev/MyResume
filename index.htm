@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajit Sharma Resume</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+}
+
+.top-bar {
+    text-align: center;
+    padding: 15px;
+    background: #2c3e50;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background: #3498db;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.container {
+    display: flex;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: #fff;
+}
+
+.left {
+    width: 35%;
+    background: #2c3e50;
+    color: white;
+    padding: 25px;
+}
+
+.left h2 {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+}
+
+.left ul {
+    padding-left: 18px;
+}
+
+.left li {
+    margin-bottom: 6px;
+}
+
+.left a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+.right {
+    width: 65%;
+    padding: 25px;
+}
+
+h1 {
+    margin: 0;
+}
+
+h3 {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+}
+
+ul {
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.date {
+    float: right;
+    color: gray;
+}
+
+[contenteditable="true"] {
+    outline: 2px dashed #3498db;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="top-bar">
+    <button onclick="toggleEdit()">✏️ Edit Resume</button>
+    <button onclick="downloadPDF()">📄 Download PDF</button>
+</div>
+
+<div id="resume" class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="left" contenteditable="false">
+
+        <h2>Contact</h2>
+        <p>📞 +91 8968653440</p>
+        <p>✉️ ajitsh000@gmail.com</p>
+        <p>📍 Chandigarh, India</p>
+
+        <p>🔗 <a href="https://www.linkedin.com/in/ajit-sharma-600047132/" target="_blank">LinkedIn</a></p>
+        <p>💻 <a href="https://github.com/Ajitsh000dev" target="_blank">GitHub</a></p>
+
+        <h2>Skills</h2>
+        <ul>
+            <li>ASP.NET Core, MVC</li>
+            <li>React, Angular, Blazor</li>
+            <li>JavaScript, TypeScript, C#</li>
+            <li>Entity Framework, LINQ</li>
+            <li>Microservices, REST APIs</li>
+            <li>SQL Server, MySQL, MongoDB</li>
+            <li>Docker, AWS, Azure</li>
+        </ul>
+
+        <h2>Soft Skills</h2>
+        <ul>
+            <li>Communication</li>
+            <li>Teamwork</li>
+            <li>Problem Solving</li>
+            <li>Adaptability</li>
+        </ul>
+
+        <h2>Education</h2>
+        <p>Diploma - Chandigarh University (2016)</p>
+        <p>12th - GMSSS (2014)</p>
+        <p>10th - GMSSS (2012)</p>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right" contenteditable="false">
+
+        <h1>Ajit Sharma</h1>
+        <p><b>Software Developer (4+ Years Experience)</b></p>
+
+        <div class="section">
+            <h3>Professional Summary</h3>
+            <p>
+                Software Developer with 4+ years of experience in ASP.NET Core, Angular, and Microservices.
+                Skilled in building scalable applications, REST APIs, and cloud-based deployments.
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>Experience</h3>
+
+            <p><b>Software Developer - CS Soft Solutions</b>
+            <span class="date">2022 - Present</span></p>
+
+            <ul>
+                <li>Developed scalable applications using ASP.NET Core and Angular</li>
+                <li>Worked on microservices and SSO integration (OpenID)</li>
+                <li>Deployed applications using AKS, AWS, and Azure</li>
+                <li>Improved system performance and API efficiency</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Projects</h3>
+            <ul>
+                <li><b>iDrive iQ:</b> Microservices-based SaaS platform with SSO and AKS deployment</li>
+                <li><b>E-Commerce Book Store:</b> ASP.NET Core MVC with Stripe and Identity framework</li>
+                <li><b>National Park API:</b> JWT authentication with Web API</li>
+                <li><b>VerimyRC:</b> Multi-tech platform using MAUI, Firebase, Web API</li>
+                <li><b>iPass:</b> OCR integration with Azure & AWS</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+let isEditable = false;
+
+function toggleEdit() {
+    isEditable = !isEditable;
+    document.querySelectorAll("[contenteditable]").forEach(el => {
+        el.contentEditable = isEditable;
+    });
+}
+
+function downloadPDF() {
+    const element = document.getElementById("resume");
+    html2pdf().from(element).set({
+        margin: 0.3,
+        filename: "Ajit_Sharma_Resume.pdf",
+        html2canvas: { scale: 2 },
+        jsPDF: { orientation: "portrait" }
+    }).save();
+}
+</script>
+
+</body>
+</html>
